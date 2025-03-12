@@ -1,3 +1,4 @@
+package Project;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,12 +9,12 @@
  *
  * @author Mynet
  */
-public class Medecin {
+public class Medcin {
     private int cin;
     private String nom;
     private String prenom;
     private int numOrdre;
-    public Medecin(int cin, String nom, String prenom, int numOrdre) {
+    public Medcin(int cin, String nom, String prenom, int numOrdre) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -53,7 +54,7 @@ public class Medecin {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Medecin other = (Medecin) obj;
+        final Medcin other = (Medcin) obj;
         if (this.cin != other.cin) {
             return false;
         }
