@@ -1,20 +1,26 @@
 package Project;
 
+import java.util.Objects;
+
 public class Patient {
     private int cin;
     private String nom;
     private String prenom;
     private int numSecuriteSociale;
 
+    // Default constructor
     public Patient() {
     }
 
+    // Parameterized constructor
     public Patient(int cin, String nom, String prenom, int numSecuriteSociale) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
         this.numSecuriteSociale = numSecuriteSociale;
     }
+
+    // Getters and Setters
     public int getCin() {
         return cin;
     }
@@ -31,14 +37,6 @@ public class Patient {
         this.nom = nom;
     }
 
-    public int getNumSecuriteSociale() {
-        return numSecuriteSociale;
-    }
-
-    public void setNumSecuriteSociale(int numSecuriteSociale) {
-        this.numSecuriteSociale = numSecuriteSociale;
-    }
-
     public String getPrenom() {
         return prenom;
     }
@@ -47,27 +45,38 @@ public class Patient {
         this.prenom = prenom;
     }
 
+    public int getNumSecuriteSociale() {
+        return numSecuriteSociale;
+    }
+
+    public void setNumSecuriteSociale(int numSecuriteSociale) {
+        this.numSecuriteSociale = numSecuriteSociale;
+    }
+
+    // Override toString() for better readability
+    @Override
     public String toString() {
-        return "CIN="+cin +"Nom="+nom + "Prenom="+prenom;
-
-
-
-
+        return "Patient{" +
+                "cin=" + cin +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", numSecuriteSociale=" + numSecuriteSociale +
+                '}';
     }
+
+    // Override equals() for proper equality comparison
+    @Override
     public boolean equals(Object obj) {
-        if (obj==null)
-            return false;
-        if(obj==this)
-            return true;
-        if(obj instanceof Patient)
-        {
-            Patient p =(Patient) obj ;
-            if(p.getNumSecuriteSociale()==numSecuriteSociale && p.getCin()==cin)
-                return true;
+        if (this == obj) return true; // Check if the object is compared with itself
+        if (obj == null || getClass() != obj.getClass()) return false; // Check for null and class type
 
-        }
-        return false;
-
+        Patient patient = (Patient) obj; // Cast the object to Patient
+        return cin == patient.cin && numSecuriteSociale == patient.numSecuriteSociale; // Compare fields
     }
 
+    // Override hashCode() to maintain the contract with equals()
+    @Override
+    public int hashCode() {
+        return Objects.hash(cin, numSecuriteSociale); // Use Java's utility method for generating hash code
+    }
 }
