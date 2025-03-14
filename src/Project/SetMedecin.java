@@ -1,54 +1,38 @@
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Mynet
- */
 public class SetMedecin {
 
-    private Set<Medecin>setM;
+    private Set<Medecin> setM;
 
     public SetMedecin() {
-        setM=new HashSet();
-   
+        setM = new HashSet<>();
     }
 
     public void ajouterMedecin(Medecin m) {
         setM.add(m);
-
     }
 
-    /* Avec l’api Stream */
+    // Using Stream API to check if a Medecin with the given CIN exists
     public boolean rechercherMedecin(int cin) {
-        return setM.stream().anyMatch(e->e.getCin()==cin);
-
+        return setM.stream().anyMatch(medecin -> medecin.getCin() == cin);
     }
 
-    /* Avec l’api Stream */
+    // Using Stream API to print all Medecins
     public void afficherMedecins() {
-        setM.stream().forEach(e->System.out.println(e));
+        setM.forEach(System.out::println);
     }
 
-    /* Avec l’api Stream */
+    // Using Stream API to count the number of Medecins
     public long nombreMedecins() {
-        
-        return setM.stream().count();
-        
+        return setM.size(); // Directly using size() is more efficient than stream().count()
     }
 
-    /* Avec l’api Stream */
+    // Using Stream API to sort Medecins by CIN and return a TreeSet
     public TreeSet<Medecin> trierMedecins() {
-       return setM.stream().collect(Collectors.toCollection(()->new TreeSet<Medecin>((x,y)->x.getCin()-y.getCin())));
-     
+        return setM.stream()
+                .collect(Collectors.toCollection(() -> new TreeSet<>((x, y) -> x.getCin() - y.getCin())));
     }
 }
-
