@@ -1,7 +1,5 @@
-La classe Medecin représente un médecin avec des informations personnelles et professionnelles.
-* Elle inclut des attributs tels que le CIN, le nom, le prénom et le numéro d'ordre professionnel.
-*
-* Les méthodes getter et setter permettent d'accéder et de modifier ces informations.
-*
-* La méthode `equals` est redéfinie pour comparer deux objets `Medecin` en fonction de leur CIN.
-* La méthode `hashCode` génère un code de hachage basé sur le CIN pour une meilleure gestion des collections.
+La classe Medcin permet de représenter un médecin en associant à chaque instance un CIN (Carte d’Identité Nationale), un nom, un prénom et un numéro d’ordre. Ces informations sont fournies dès la création d’un objet Medcin grâce à un constructeur qui les initialise. Une fois l’objet créé, il est possible d’accéder à ses données via des méthodes appelées getters. Par exemple, getNom() permet d’obtenir le nom du médecin, tandis que getCin() retourne son numéro de carte d’identité.
+En plus de pouvoir consulter les informations, la classe permet aussi de les modifier grâce aux setters. Par exemple, si un médecin change de nom, on peut utiliser la méthode setNom(String nom) pour mettre à jour cette information. Toutefois, certaines données, comme le CIN, sont généralement considérées comme immuables, mais ici, la classe offre tout de même une méthode setCin(int cin) pour le modifier si nécessaire.
+La classe intègre également deux méthodes importantes : hashCode() et equals(Object obj). La méthode hashCode() génère un identifiant unique basé sur le CIN, ce qui permet d’utiliser les objets Medcin dans des structures de données comme les HashSet ou les HashMap. De son côté, la méthode equals() permet de comparer deux objets Medcin : si leurs CIN sont identiques, alors les deux objets sont considérés comme représentant le même médecin, ce qui évite d’avoir des doublons dans une liste ou une base de données.
+En résumé, cette classe est conçue pour stocker et manipuler efficacement les informations d’un médecin tout en garantissant l’unicité de chaque instance grâce à son CIN. Elle facilite la gestion des médecins en assurant un accès structuré aux données et en offrant des mécanismes d’égalité et de hachage utiles pour leur manipulation dans des collections.
+
